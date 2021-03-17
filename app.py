@@ -12,5 +12,14 @@ data = pd.read_csv('sample.csv')
 data.Timestamp = data.Timestamp.apply(lambda x:pd.to_datetime(x[:10]))
 dates = data[['Timestamp','Which Year of Study are you currently in?']].groupby(['Timestamp']).count()
 
+timeindex = pd.date_range(start=dates.index[0],end=dates.index[-1])
+all_dates = pd.DataFrame(columns=['number'],index=timeindex)
+
+for i in timeindex:
+  if i in dates.index:
+    all_dates[i] = dates[i]
+  else:
+    all_dates[i] = 0
+
 col1.subheader("Response Timeline")
-col1.line_chart(dates)
+col1.line_chart(all_dates)
