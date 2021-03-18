@@ -9,6 +9,8 @@ st.title("PRU Feedback Survey Dashboard")
 data = pd.read_csv('sample.csv')
 
 # Number of responses along the timeline
+col1,col2 = st.beta_columns(2)
+
 data.Timestamp = data.Timestamp.apply(lambda x:pd.to_datetime(x[:10]))
 dates = data.Timestamp.value_counts().sort_index()
 
