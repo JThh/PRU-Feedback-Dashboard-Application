@@ -1,6 +1,9 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import seaborn as sns
+%matplotlib inline
+sns.set()
 
 st.title("PRU Feedback Survey Dashboard")
 
@@ -28,7 +31,11 @@ st.line_chart(all_dates)
 with st.beta_expander("Demography Analysis"):
 
   st.subheader('Distribution of Respondent Home Faculty')
-  st.bar_chart(data['Which Faculty are you from? (Indicate your home faculty if you are in a double-degree programme)'].value_counts())
+  df_faculty = data['Which Faculty are you from? (Indicate your home faculty if you are in a double-degree programme)'].value_counts()
+  pie = plt.figure(figsize=[10,6])
+  labels = df_faculty.index
+  plt.pie(x=df_faculty, autopct="%.1f%%", explode=[0.05]*4, labels=labels, pctdistance=0.5)
+  plt.title("Distribution of Home Faculty", fontsize=14)
   
   st.subheader('Distribution of Respondent Year of Study')
   st.bar_chart(data['Which Year of Study are you currently in?'].value_counts())
