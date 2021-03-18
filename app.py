@@ -27,14 +27,15 @@ st.subheader("Response Timeline")
 st.line_chart(all_dates)
 
 with st.beta_expander("Demography Analysis"):
+  
+  col1,col2 = st.beta_columns(2)
 
-  st.subheader('Distribution of Respondent Home Faculty')
+  col1.subheader('Distribution of Respondent Home Faculty')
   df_faculty = data['Which Faculty are you from? (Indicate your home faculty if you are in a double-degree programme)'].value_counts()
   df_year = data['Which Year of Study are you currently in?'].value_counts()
   
   fig, ax = plt.subplots()
   labels = df_faculty.index
-  plt.figure(figsize=(8,6))
   plt.pie(x=df_faculty, 
           autopct="%.1f%%", 
           explode=[0.05]*df_faculty.index.shape[0], 
@@ -42,12 +43,12 @@ with st.beta_expander("Demography Analysis"):
           pctdistance=0.5)
  
   plt.title("Distribution of Home Faculty", fontsize=14)
-  st.pyplot(fig)
+  col1.pyplot(fig)
   
-  st.subheader('Distribution of Respondent Year of Study')
+  col2.subheader('Distribution of Respondent Year of Study')
   fig, ax = plt.subplots()
   plt.figure(figsize=(8,6))
   plt.bar(df_year.index,df_year.values,width=0.3)
   plt.title("Distribution of Year of Study", fontsize=14)
-  st.pyplot(fig)
+  col2.pyplot(fig)
 
