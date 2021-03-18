@@ -42,8 +42,8 @@ with st.beta_expander("Demography Analysis"):
   
   data.rename({'Which Faculty are you from? (Indicate your home faculty if you are in a double-degree programme)':'Faculty',
               'Which Year of Study are you currently in?': 'Year of Study'}, axis='columns',inplace=True)
-  df_faculty = data[['Faculty','count']].groupby(['Faculty']).count()
-  df_year = data[['Year of Study','count']].groupby(['Year of Study']).count()
+  df_faculty = data[['Faculty','count']].groupby(['Faculty']).count().reset_index()
+  df_year = data[['Year of Study','count']].groupby(['Year of Study']).count().reset_index()
   
   fig = px.pie(
       df_faculty, 
