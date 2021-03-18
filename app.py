@@ -2,6 +2,12 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import plotly.express as px
+from plotly.subplots import make_subplots
+from plotly.offline import init_notebook_mode, iplot
+import plotly.graph_objects as go
+import plotly.graph_objs as go
+from wordcloud import WordCloud, STOPWORDS
 
 st.title("PRU Feedback Survey Dashboard")
 
@@ -51,3 +57,9 @@ with st.beta_expander("Demography Analysis"):
   plt.title("Distribution of Year of Study", fontsize=14)
   col2.pyplot(fig)
 
+
+with st.beta_expander("Textual Analysis"):
+  
+  
+  
+  
