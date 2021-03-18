@@ -47,7 +47,6 @@ with st.beta_expander("Demography Analysis"):
   
   col2.subheader('Distribution of Respondent Year of Study')
   fig, ax = plt.subplots()
-  plt.figure(figsize=(8,6))
   plt.bar(df_year.index,df_year.values,width=0.3)
   plt.title("Distribution of Year of Study", fontsize=14)
   col2.pyplot(fig)
