@@ -32,8 +32,8 @@ with st.beta_expander("Demography Analysis"):
   df_faculty = data['Which Faculty are you from? (Indicate your home faculty if you are in a double-degree programme)'].value_counts()
   fig, ax = plt.subplots()
   labels = df_faculty.index
-  ax.pie(x=df_faculty, autopct="%.1f%%", explode=[0.05]*df_faculty.index.shape[0], labels=labels, pctdistance=0.5)
-  fig.title("Distribution of Home Faculty", fontsize=14)
+  plt.pie(x=df_faculty, autopct="%.1f%%", explode=[0.05]*df_faculty.index.shape[0], labels=labels, pctdistance=0.5)
+  plt.title("Distribution of Home Faculty", fontsize=14)
   st.pyplot(fig)
   
   st.subheader('Distribution of Respondent Year of Study')
