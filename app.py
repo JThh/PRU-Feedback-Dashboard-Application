@@ -34,9 +34,8 @@ st.line_chart(all_dates)
 
 with st.beta_expander("Demography Analysis"):
   
-  col1,col2 = st.beta_columns(2)
 
-  col1.subheader('Distribution of Respondent Home Faculty')
+  st.subheader('Distribution of Respondent Home Faculty')
   
   data['count'] = 1
   
@@ -52,9 +51,9 @@ with st.beta_expander("Demography Analysis"):
       color="Faculty",
       title='Which Faculty are you from?'
   )
-  col1.plotly_chart(fig)
+  st.plotly_chart(fig)
   
-  col2.subheader('Distribution of Respondent Year of Study')
+  st.subheader('Distribution of Respondent Year of Study')
   fig = px.bar(
       df_year, 
       x="count", 
@@ -64,7 +63,7 @@ with st.beta_expander("Demography Analysis"):
       title='Which year of study are you currently in'
   )
   
-  col2.plotly_chart(fig)  
+  st.plotly_chart(fig)  
   
   
   
