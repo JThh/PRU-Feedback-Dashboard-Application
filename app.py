@@ -58,7 +58,7 @@ with st.beta_expander("Demography Analysis"):
   col2.pyplot(fig)
 
 
-with st.beta_expander("Textual Analysis"):
+# with st.beta_expander("Textual Analysis"):
   
   
   
