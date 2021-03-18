@@ -1,9 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import seaborn as sns
-%matplotlib inline
-sns.set()
+import matplotlib.pyplot as plt
 
 st.title("PRU Feedback Survey Dashboard")
 
