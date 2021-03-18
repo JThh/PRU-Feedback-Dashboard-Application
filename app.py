@@ -34,6 +34,7 @@ with st.beta_expander("Demography Analysis"):
   
   fig, ax = plt.subplots()
   labels = df_faculty.index
+  plt.figure(figsize=(8,6))
   plt.pie(x=df_faculty, 
           autopct="%.1f%%", 
           explode=[0.05]*df_faculty.index.shape[0], 
@@ -45,6 +46,7 @@ with st.beta_expander("Demography Analysis"):
   
   st.subheader('Distribution of Respondent Year of Study')
   fig, ax = plt.subplots()
+  plt.figure(figsize=(8,6))
   plt.bar(df_year.index,df_year.values,width=0.3)
   plt.title("Distribution of Year of Study", fontsize=14)
   st.pyplot(fig)
