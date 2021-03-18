@@ -41,7 +41,7 @@ with st.beta_expander("Demography Analysis"):
   data['count'] = 1
   
   data.rename({'Which Faculty are you from? (Indicate your home faculty if you are in a double-degree programme)':'Faculty',
-              'Which Year of Study are you currently in?': 'Year of Study'}, axis='columns')
+              'Which Year of Study are you currently in?': 'Year of Study'}, axis='columns',inplace=True)
   df_faculty = data[['Faculty','count']].groupby(['Faculty']).count()
   df_year = data[['Year of Study','count']].groupby(['Year of Study']).count()
   
