@@ -9,7 +9,6 @@ st.title("PRU Feedback Survey Dashboard")
 data = pd.read_csv('sample.csv')
 
 # Number of responses along the timeline
-col1,col2 = st.beta_columns(2)
 
 data.Timestamp = data.Timestamp.apply(lambda x:pd.to_datetime(x[:10]))
 dates = data.Timestamp.value_counts().sort_index()
@@ -23,10 +22,10 @@ for i in timeindex:
   else:
     all_dates.loc[i,'Number_of_replies'] = 0
 
-col1.subheader("Response Timeline")
-col1.line_chart(all_dates)
+st.subheader("Response Timeline")
+st.line_chart(all_dates)
 
-col2.subheader('Distribution of Respondent Home Faculty')
-col2.bar_chart(data['Which Faculty are you from? (Indicate your home faculty if you are in a double-degree programme)'].value_counts())
+st.subheader('Distribution of Respondent Home Faculty')
+st.bar_chart(data['Which Faculty are you from? (Indicate your home faculty if you are in a double-degree programme)'].value_counts())
 
 
