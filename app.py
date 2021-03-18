@@ -8,7 +8,7 @@ col1, col2 = st.beta_columns([3,1])
 
 data = pd.read_csv('sample.csv')
 
-# Extract the date of responses
+# Number of responses along the timeline
 data.Timestamp = data.Timestamp.apply(lambda x:pd.to_datetime(x[:10]))
 dates = data.Timestamp.value_counts().sort_index()
 
@@ -23,3 +23,8 @@ for i in timeindex:
 
 col1.subheader("Response Timeline")
 col1.line_chart(all_dates)
+
+col2.dataframe(all_dates)
+
+
+
