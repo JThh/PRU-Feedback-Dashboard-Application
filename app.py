@@ -30,11 +30,11 @@ with st.beta_expander("Demography Analysis"):
 
   st.subheader('Distribution of Respondent Home Faculty')
   df_faculty = data['Which Faculty are you from? (Indicate your home faculty if you are in a double-degree programme)'].value_counts()
-  pie = plt.figure(figsize=[10,6])
+  fig, ax = plt.subplots()
   labels = df_faculty.index
-  plt.pie(x=df_faculty, autopct="%.1f%%", explode=[0.05]*df_faculty.index.shape[0], labels=labels, pctdistance=0.5)
-  plt.title("Distribution of Home Faculty", fontsize=14)
-  plt.show()
+  ax.pie(x=df_faculty, autopct="%.1f%%", explode=[0.05]*df_faculty.index.shape[0], labels=labels, pctdistance=0.5)
+  ax.title("Distribution of Home Faculty", fontsize=14)
+  st.pyplot(fig)
   
   st.subheader('Distribution of Respondent Year of Study')
   st.bar_chart(data['Which Year of Study are you currently in?'].value_counts())
