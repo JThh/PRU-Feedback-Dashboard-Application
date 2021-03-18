@@ -50,7 +50,7 @@ with st.beta_expander("Demography Analysis"):
       names='Faculty', 
       values="count", 
       color='Faculty',
-      title='Which Faculty are you from?', 
+      title='Which Faculty are you from?'
   )
   col1.plotly_chart(fig)
   
@@ -61,7 +61,7 @@ with st.beta_expander("Demography Analysis"):
       y="Year of Study", 
       color = "Year of Study",
       orientation='h', 
-      title='Which year of study are you currently in', 
+      title='Which year of study are you currently in'
   )
   
   col2.plotly_chart(fig)  
