@@ -4,7 +4,7 @@ import numpy as np
 
 st.title("PRU Feedback Survey Dashboard")
 
-col1, col2 = st.beta_columns([3,1])
+col1, col2 = st.beta_columns([1,1])
 
 data = pd.read_csv('sample.csv')
 
