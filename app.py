@@ -47,9 +47,9 @@ with st.beta_expander("Demography Analysis"):
   
   fig = px.pie(
       df_faculty, 
-      names='Faculty', 
+      names="Faculty", 
       values="count", 
-      color='Faculty',
+      color="Faculty",
       title='Which Faculty are you from?'
   )
   col1.plotly_chart(fig)
