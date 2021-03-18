@@ -30,12 +30,35 @@ with st.beta_expander("Demography Analysis"):
 
   st.subheader('Distribution of Respondent Home Faculty')
   df_faculty = data['Which Faculty are you from? (Indicate your home faculty if you are in a double-degree programme)'].value_counts()
+  df_year = data['Which Year of Study are you currently in?']
+  
+  cmap = plt.get_cmap("tab20c")
+  outer_colors = cmap(np.arange(3)*4)
+  inner_colors = cmap(np.array([1,5,9]))
   fig, ax = plt.subplots()
   labels = df_faculty.index
-  plt.pie(x=df_faculty, autopct="%.1f%%", explode=[0.05]*df_faculty.index.shape[0], labels=labels, pctdistance=0.5)
+  plt.pie(x=df_faculty, 
+          startangle=90, 
+          pctdistance =0.88 ,
+          colors=outer_colors,
+          autopct="%.1f%%", 
+          explode=[0.05]*df_faculty.index.shape[0], 
+          labels=labels, pctdistance=0.5)
+  plt.pie(x=df_year, 
+          startangle=90, 
+          pctdistance =0.88 ,
+          colors=inner_colors, 
+          autopct="%.1f%%", 
+          explode=[0.05]*df_faculty.index.shape[0], 
+          labels=labels, 
+          pctdistance=0.5)
   plt.title("Distribution of Home Faculty", fontsize=14)
   st.pyplot(fig)
   
   st.subheader('Distribution of Respondent Year of Study')
-  st.bar_chart(data['Which Year of Study are you currently in?'].value_counts())
+  fig, ax = plt.subplots()
+  labels = df_faculty.index
+  plt.barplot(x=df_faculty)
+  plt.title("Distribution of Home Faculty", fontsize=14)
+  st.pyplot(fig)
 
