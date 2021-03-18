@@ -4,7 +4,7 @@ import numpy as np
 
 st.title("PRU Feedback Survey Dashboard")
 
-col1, col2 = st.beta_columns([1.8,1])
+col1, col2 = st.beta_columns([1.5,1])
 
 data = pd.read_csv('sample.csv')
 
@@ -24,6 +24,7 @@ for i in timeindex:
 col1.subheader("Response Timeline")
 col1.line_chart(all_dates)
 
+col2.subheader('Response data')
 col2.dataframe(all_dates)
 
 
