@@ -25,7 +25,11 @@ for i in timeindex:
 st.subheader("Response Timeline")
 st.line_chart(all_dates)
 
-st.subheader('Distribution of Respondent Home Faculty')
-st.bar_chart(data['Which Faculty are you from? (Indicate your home faculty if you are in a double-degree programme)'].value_counts())
+with st.beta_expander("Demography Analysis"):
 
+  st.subheader('Distribution of Respondent Home Faculty')
+  st.bar_chart(data['Which Faculty are you from? (Indicate your home faculty if you are in a double-degree programme)'].value_counts())
+  
+  st.subheader('Distribution of Respondent Year of Study')
+  st.bar_chart(data['Which Year of Study are you currently in?'].value_counts())
 
