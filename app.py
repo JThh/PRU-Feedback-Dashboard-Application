@@ -25,6 +25,6 @@ col1.subheader("Response Timeline")
 col1.line_chart(all_dates)
 
 col2.subheader('Distribution of Respondent Home Faculty')
-st.bar_plot(data['Which Faculty are you from? (Indicate your home faculty if you are in a double-degree programme)'].value_counts())
+st.bar_chart(data['Which Faculty are you from? (Indicate your home faculty if you are in a double-degree programme)'].value_counts())
 
 
