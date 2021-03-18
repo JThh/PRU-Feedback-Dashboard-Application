@@ -10,7 +10,7 @@ data = pd.read_csv('sample.csv')
 
 # Extract the date of responses
 data.Timestamp = data.Timestamp.apply(lambda x:pd.to_datetime(x[:10]))
-dates = df_1.Timestamp.value_counts().sort_index()
+dates = data.Timestamp.value_counts().sort_index()
 
 timeindex = pd.date_range(start=dates.index[0],end=dates.index[-1])
 all_dates = pd.DataFrame(columns=['Number_of_replies'],index=timeindex)
