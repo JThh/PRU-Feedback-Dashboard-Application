@@ -19,7 +19,7 @@ for i in timeindex:
   if i in dates.index:
     all_dates.loc[i,'Number_of_replies'] = dates[i]
   else:
-    all_dates[i] = 0
+    all_dates.loc[i,'Number_of_replies'] = 0
 
 col1.subheader("Response Timeline")
 col1.line_chart(all_dates)
