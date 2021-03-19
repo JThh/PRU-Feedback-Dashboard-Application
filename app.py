@@ -214,7 +214,7 @@ with st.beta_expander('Textual Analysis'):
   df_zoning_score['count'] = 1
   df_sen = df_zoning_score.groupby(['category']).count().reset_index()
   
-  fig = px.bar(df_sen, x='category', y='count')
+  fig = px.bar(df_sen, x='category', y='count',color_discrete_sequence=['red','grey','green'])
   fig.update_layout(
     title='Sentiment Analysis in General',
     xaxis_tickfont_size=15,
@@ -223,6 +223,7 @@ with st.beta_expander('Textual Analysis'):
         titlefont_size=16,
         tickfont_size=14,
     ),
+    barmode='stack',
     bargap=0.15, # gap between bars of adjacent location coordinates.
     bargroupgap=0.1 # gap between bars of the same location coordinate.
   )  
