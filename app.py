@@ -148,13 +148,13 @@ with st.beta_expander('Textual Analysis'):
     df_fac_sen['count'] = 1
     fac_pos = df_fac_sen.groupby(['category','Faculty']).count()
     counts = pd.DataFrame(columns = ['Negative','Neutral','Positive'], index=faculties)
-    st.dataframe(fac_pos)
+    
     for i in counts.columns:
       for j in counts.index:
         if (i,j) not in fac_pos.index:
           counts.loc[j,i] = 0
         else:
-          counts.loc[j,i] = fac_pos[i][j]['count']
+          counts.loc[j,i] = fac_pos.loc[i,j]['count']
    
     fig = go.Figure(data=[
         go.Bar(name='Negative', x=faculties, y=counts['Negative']),
