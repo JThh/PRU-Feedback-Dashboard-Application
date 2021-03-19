@@ -197,7 +197,7 @@ with st.beta_expander('Textual Analysis'):
     fig.add_trace(go.Bar(name='Positive', x=years, y=counts['Positive'],marker_color='green'))
     
     fig.update_layout(
-      title='Sentiment Analysis Across Faculties',
+      title='Sentiment Analysis Grouped by Years of Study',
       xaxis_tickfont_size=15,
       yaxis=dict(
           title='Counts',
@@ -220,7 +220,7 @@ with st.beta_expander('Textual Analysis'):
       df_sen, 
       names="category", 
       values="count", 
-      color="category",
+      color_discrete_sequence = ['red','grey','green'],
       title='Sentiment Analysis in General'
     )
     
