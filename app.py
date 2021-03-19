@@ -154,7 +154,7 @@ with st.beta_expander('Textual Analysis'):
         if (i,j) not in fac_pos.index:
           counts.loc[j,i] = 0
         else:
-          counts.loc[j,i] = fac_pos.loc[i,j]
+          counts.loc[j,i] = fac_pos[i][j]['count']
    
     fig = go.Figure(data=[
         go.Bar(name='Negative', x=faculties, y=counts['Negative']),
