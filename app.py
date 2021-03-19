@@ -16,15 +16,6 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 # Disable the warnings.
 st.set_option('deprecation.showPyplotGlobalUse', False)
-
-st.sidebar.header('Dashboard for PRU Feedback Survey')
-
-with st.sidebar.beta_expander("Instructions"):
-  st.markdown('''
-    * The whole process is grouped into 4 parts: **time series analysis**, **demographic analysis**, **multiple-choice question analysis** and **textual analysis**. 
-    * Please follow the logic flow and do not miss any button to ensure the normal operation. 
-    * Also the code may be reused for future surveys upon minor modifications.
-                      ''')
                       
 
 # Some utility functions.
@@ -53,13 +44,23 @@ def categorize(senti):
   else:
     return 'Positive'
   
-  
+# Global Variables
+ORDER_OF_AGREE = ['Strongly agree','Agree','Slightly agree','Slightly disagree','Disagree','Strongly disagree']
  
 # Set the title and basic layout of the application.
 st.title("PRU Feedback Survey Dashboard")
 st.markdown('_Exploratory Analysis_ | Presented by **PRU Feedback Team**')
 
+st.sidebar.header('Dashboard for PRU Feedback Survey')
 
+with st.sidebar.beta_expander("Instructions"):
+  st.markdown('''
+    * The whole process is grouped into 4 parts: **time series analysis**, **demographic analysis**, **multiple-choice question analysis** and **textual analysis**. 
+    * Please follow the logic flow and do not miss any button to ensure the normal operation. 
+    * Also the code may be reused for future surveys upon minor modifications.
+                      ''')
+
+# Read in the data
 data = pd.read_csv('sample.csv')
 
 # Number of responses along the timeline
@@ -116,13 +117,15 @@ with st.beta_expander("Demography Analysis"):
   st.plotly_chart(fig)  
 
 with st.beta_expander('Multiple Choice Question Analysis (Example)'):
+  
   data.rename({'During my time on campus, the COVID-19 measures put in place by NUS were easy to follow.':'Measures easy to follow'},inplace=True,axis=1)
-  df = data[['Measures easy to follow','count']].groupby(['Measures easy to follow']).count().reset_index()
+  df = data[['Measures easy to follow','count']].groupby(['Measures easy to follow']).count().reset_index().sort_values(by=['Measures easy to follow'],key=lambda x:ORDER_OF_AGREE.index(x))
   fig = px.bar(
     df, 
     x="count", 
     y="Measures easy to follow", 
     color = "Measures easy to follow",
+    orientation='v',
     title='During my time on campus, the COVID-19 measures put in place by NUS were easy to follow.'
   )
   st.plotly_chart(fig)  
