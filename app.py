@@ -162,10 +162,10 @@ with st.beta_expander('Textual Analysis'):
         go.Bar(name='Positive', x=faculties, y=counts['Positive'])
     ])
     # Change the bar mode
-    fig.update_layout(barmode='group')
+    fig.update_layout(barmode='stack')
     st.plotly_chart(fig)
     
-  elif 'Year of Study' in combined_with:
+  if 'Year of Study' in combined_with:
     years = data['Year of Study'].unique()
     df_year_sen = pd.concat([df_zoning_score.category, data['Year of Study']],axis=1)
     df_year_sen['count'] = 1
@@ -178,14 +178,26 @@ with st.beta_expander('Textual Analysis'):
           counts.loc[j,i] = 0
         else:
           counts.loc[j,i] = year_pos.loc[i,j]['count']    
+    fig = go.Figure()
     
-    fig = go.Figure(data=[
-        go.Bar(name='Negative', x=years, y=counts['Negative']),
-        go.Bar(name='Neutral', x=years, y=counts['Neutral']),
-        go.Bar(name='Positive', x=years, y=counts['Positive'])
-    ])
+    fig.add_trace(go.Bar(name='Negative', x=years, y=counts['Negative']),marker_color='red'))
+    fig.add_trace(go.Bar(name='Neutral', x=years, y=counts['Neutral']),marker_color='grey'))
+    fig.add_trace(go.Bar(name='Positive', x=years, y=counts['Positive']),marker_color='green'))
+    
+    fig.update_layout(
+      title='Sentiment Analysis Across Faculties',
+      xaxis_tickfont_size=15,
+      yaxis=dict(
+          title='Counts',
+          titlefont_size=16,
+          tickfont_size=14,
+      ),
+      barmode='group',
+      bargap=0.15, # gap between bars of adjacent location coordinates.
+      bargroupgap=0.1 # gap between bars of the same location coordinate.
+    )
     # Change the bar mode
-    fig.update_layout(barmode='group')
+    fig.update_layout(barmode='stack')
     st.plotly_chart(fig)    
 
   
