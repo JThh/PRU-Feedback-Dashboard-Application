@@ -117,7 +117,7 @@ with st.beta_expander("Demography Analysis"):
 
 with st.beta_expander('Multiple Choice Question Analysis (Example)'):
   data.rename({'During my time on campus, the COVID-19 measures put in place by NUS were easy to follow.':'Measures easy to follow'},inplace=True,axis=1)
-  df = data[['Measures easy to follow','count']].groupby(['Measures easy to follow']).count()
+  df = data[['Measures easy to follow','count']].groupby(['Measures easy to follow']).count().reset_index()
   fig = px.bar(
     df, 
     x="count", 
