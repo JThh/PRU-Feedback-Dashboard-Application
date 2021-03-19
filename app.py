@@ -99,7 +99,6 @@ with st.beta_expander("Demography Analysis"):
       names="Faculty", 
       values="count", 
       color="Faculty",
-      title='Which Faculty are you from?',
       width=600, height=600
   )
   st.plotly_chart(fig)
@@ -111,7 +110,6 @@ with st.beta_expander("Demography Analysis"):
       y="Year of Study", 
       color = "Year of Study",
       orientation='h', 
-      title='Which year of study are you currently in',
       width=600, height=600
   )
   
