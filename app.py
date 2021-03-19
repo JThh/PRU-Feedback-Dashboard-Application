@@ -156,15 +156,28 @@ with st.beta_expander('Textual Analysis'):
         else:
           counts.loc[j,i] = fac_pos.loc[i,j]['count']
    
-    fig = go.Figure(data=[
-        go.Bar(name='Negative', x=faculties, y=counts['Negative']),
-        go.Bar(name='Neutral', x=faculties, y=counts['Neutral']),
-        go.Bar(name='Positive', x=faculties, y=counts['Positive'])
-    ])
-    # Change the bar mode
-    fig.update_layout(barmode='stack')
-    st.plotly_chart(fig)
+   
+    fig = go.Figure()
     
+    fig.add_trace(go.Bar(name='Negative', x=faculties, y=counts['Negative'],marker_color='red'))
+    fig.add_trace(go.Bar(name='Neutral', x=faculties, y=counts['Neutral'],marker_color='grey'))
+    fig.add_trace(go.Bar(name='Positive', x=faculties, y=counts['Positive'],marker_color='green'))
+    
+    fig.update_layout(
+      title='Sentiment Analysis Across Faculties',
+      xaxis_tickfont_size=15,
+      yaxis=dict(
+          title='Counts',
+          titlefont_size=16,
+          tickfont_size=14,
+      ),
+      barmode='group',
+      bargap=0.15, # gap between bars of adjacent location coordinates.
+      bargroupgap=0.1 # gap between bars of the same location coordinate.
+    )
+    # Change the bar mode
+    st.plotly_chart(fig)    
+  
   if 'Year of Study' in combined_with:
     years = data['Year of Study'].unique()
     df_year_sen = pd.concat([df_zoning_score.category, data['Year of Study']],axis=1)
