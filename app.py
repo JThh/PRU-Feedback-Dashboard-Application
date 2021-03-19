@@ -34,9 +34,9 @@ with st.beta_expander('Time Series Analysis'):
       all_dates.loc[i,'Number_of_replies'] = 0
 
   st.subheader("Response Timeline")
-  st.line_chart(all_dates)
+  st.area_chart(all_dates)
   
-  st.table(all_dates)
+  st.dataframe(all_dates)
 
 with st.beta_expander("Demography Analysis"):
   
