@@ -151,9 +151,9 @@ with st.beta_expander('Textual Analysis'):
     st.dataframe(df_fac_sen)
     st.dataframe(fac_pos['Negative'])
     fig = go.Figure(data=[
-        go.Bar(name='Negative', x=faculties, y=fac_pos['Negative'].values),
-        go.Bar(name='Neutral', x=faculties, y=fac_pos['Neutral'].values),
-        go.Bar(name='Positive', x=faculties, y=fac_pos['Positive'].values)
+        go.Bar(name='Negative', x=faculties, y=fac_pos.loc['Negative'].values),
+        go.Bar(name='Neutral', x=faculties, y=fac_pos.loc['Neutral'].values),
+        go.Bar(name='Positive', x=faculties, y=fac_pos.loc['Positive'].values)
     ])
     # Change the bar mode
     fig.update_layout(barmode='group')
