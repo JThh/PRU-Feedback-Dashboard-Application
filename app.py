@@ -149,7 +149,7 @@ with st.beta_expander('Textual Analysis'):
     fac_pos = df_fac_sen.groupby(['category','Faculty']).count()
     
     st.dataframe(df_fac_sen)
-    st.dataframe(fac_pos)
+    st.dataframe(fac_pos['Negative'])
     fig = go.Figure(data=[
         go.Bar(name='Negative', x=faculties, y=fac_pos['Negative'].values),
         go.Bar(name='Neutral', x=faculties, y=fac_pos['Neutral'].values),
