@@ -135,7 +135,7 @@ with st.beta_expander('Textual Analysis'):
   
   df_zoning = data['I feel that the zoning restrictions were ________.'].rename_axis('comments')
 
-  st.header('I feel that the zoning restrictions were _.')
+  st.header('I feel that the zoning restrictions were ____.')
   if st.checkbox('Show n random comments',True,key='1'):
     number = st.slider('Number of comments to take a look at:', 1, 10, 5,key='1')
     sample = df_zoning.sample(number)
@@ -144,9 +144,9 @@ with st.beta_expander('Textual Analysis'):
   st.subheader('Wordcloud')
  
    
-  clouds = st.slider('Select n comments to visualize their collective word clouds',1,df_zoning.shape[0],key='select')
+  clouds = st.slider('Select n comments to visualize their collective word clouds',1,df_zoning.dropna().shape[0],key='select')
   if st.button('Click to show the cloud',key='cloud'):
-      build_wordcloud(df_zoning.sample(clouds), f'Word Cloud for {clouds} sampled comments')
+      build_wordcloud(df_zoning.dropna().sample(clouds), f'Word Cloud for {clouds} sampled comments')
       
     
   
@@ -162,7 +162,7 @@ with st.beta_expander('Textual Analysis'):
     
   df_zoning_score['category'] = df_zoning_score.scores.apply(lambda x:categorize(x))
   
-  if st.button('Show the boxplot',key='boxplot'):
+  if st.checkbox('Show the boxplot of Polarity Score',True,key='boxplot'):
     fig = px.box(df_zoning_score, x="category", y="scores", points="all")
     st.plotly_chart(fig)
     
