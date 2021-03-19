@@ -9,6 +9,9 @@ import plotly.graph_objects as go
 import plotly.graph_objs as go
 from wordcloud import WordCloud, STOPWORDS
 
+# Disable the warnings.
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
 st.title("PRU Feedback Survey Dashboard")
 st.markdown('Exploratory Analysis on Some Specific Questions')
 
@@ -32,6 +35,8 @@ with st.beta_expander('Time Series Analysis'):
 
   st.subheader("Response Timeline")
   st.line_chart(all_dates)
+  
+  st.table(all_dates)
 
 with st.beta_expander("Demography Analysis"):
   
