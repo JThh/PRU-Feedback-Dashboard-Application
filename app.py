@@ -76,7 +76,7 @@ with st.beta_expander('Time Series Analysis'):
     if i in dates.index:
       all_dates.loc[i,'Number_of_replies'] = dates[i]
     else:
-      all_dates.loc[i,'Number_of_replies'] = np.random.randint(5,size=1)
+      all_dates.loc[i,'Number_of_replies'] = np.random.randint(5)
 
   st.subheader("Response Timeline")
   
