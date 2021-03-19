@@ -164,6 +164,29 @@ with st.beta_expander('Textual Analysis'):
     # Change the bar mode
     fig.update_layout(barmode='group')
     st.plotly_chart(fig)
+    
+  elif 'Year of Study' in combined_with:
+    years = data['Year of Study'].unique()
+    df_year_sen = pd.concat([df_zoning_score.category, data['Year of Study']],axis=1)
+    df_year_sen['count'] = 1
+    year_pos = df_year_sen.groupby(['category','Year of Study']).count()
+    counts = pd.DataFrame(columns = ['Negative','Neutral','Positive'], index=years)
+    
+    for i in counts.columns:
+      for j in counts.index:
+        if (i,j) not in year_pos.index:
+          counts.loc[j,i] = 0
+        else:
+          counts.loc[j,i] = year_pos.loc[i,j]['count']    
+    
+    fig = go.Figure(data=[
+        go.Bar(name='Negative', x=years, y=counts['Negative']),
+        go.Bar(name='Neutral', x=years, y=counts['Neutral']),
+        go.Bar(name='Positive', x=years, y=counts['Positive'])
+    ])
+    # Change the bar mode
+    fig.update_layout(barmode='group')
+    st.plotly_chart(fig)    
 
   
 
