@@ -140,6 +140,7 @@ with st.beta_expander('Textual Analysis'):
     fig = px.box(df_zoning_score, x="category", y="scores", points="all")
     st.plotly_chart(fig)
     
+  st.subheader('Categorize the sentiment')
   st.markdown('To make easier comparison, the sentiment is categoried into \'positive\', \'neutral\' and \'negative\' based on their polarity score. Now it\'s time to visualize our findings.')
   
   combined_with = st.multiselect('Combine the result with', ('Faculty','Year of Study'),key='combo')
