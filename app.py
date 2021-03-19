@@ -135,8 +135,6 @@ with st.beta_expander('Textual Analysis'):
     st.table(df_zoning_score.sample(5))
     
   df_zoning_score['category'] = df_zoning_score.scores.apply(lambda x:categorize(x))
-  
-  st.dataframe(df_zoning_score['category'])
     
   st.markdown('To make easier comparison, the sentiment is categoried into \'positive\', \'neutral\' and \'negative\' based on their polarity score. Now it\'s time to visualize our findings.')
   
