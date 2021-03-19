@@ -124,10 +124,10 @@ with st.beta_expander('Multiple Choice Question Analysis (Example)'):
   df.sort_values(by=['sort'])
   fig = px.bar(
     df, 
-    x="count", 
-    y="Measures easy to follow", 
+    x="Measures easy to follow", 
+    y="count", 
     color = "Measures easy to follow",
-    title='During my time on campus, the COVID-19 measures put in place by NUS were easy to follow.'
+    title='The COVID-19 measures put in place by NUS were easy to follow.'
   )
   st.plotly_chart(fig)  
   
