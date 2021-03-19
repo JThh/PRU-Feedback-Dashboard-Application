@@ -178,11 +178,12 @@ with st.beta_expander('Textual Analysis'):
           counts.loc[j,i] = 0
         else:
           counts.loc[j,i] = year_pos.loc[i,j]['count']    
+    
     fig = go.Figure()
     
-    fig.add_trace(go.Bar(name='Negative', x=years, y=counts['Negative']),marker_color='red'))
-    fig.add_trace(go.Bar(name='Neutral', x=years, y=counts['Neutral']),marker_color='grey'))
-    fig.add_trace(go.Bar(name='Positive', x=years, y=counts['Positive']),marker_color='green'))
+    fig.add_trace(go.Bar(name='Negative', x=years, y=counts['Negative'],marker_color='red'))
+    fig.add_trace(go.Bar(name='Neutral', x=years, y=counts['Neutral'],marker_color='grey'))
+    fig.add_trace(go.Bar(name='Positive', x=years, y=counts['Positive'],marker_color='green'))
     
     fig.update_layout(
       title='Sentiment Analysis Across Faculties',
@@ -192,12 +193,11 @@ with st.beta_expander('Textual Analysis'):
           titlefont_size=16,
           tickfont_size=14,
       ),
-      barmode='group',
+      barmode='stack',
       bargap=0.15, # gap between bars of adjacent location coordinates.
       bargroupgap=0.1 # gap between bars of the same location coordinate.
     )
     # Change the bar mode
-    fig.update_layout(barmode='stack')
     st.plotly_chart(fig)    
 
   
