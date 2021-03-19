@@ -107,7 +107,7 @@ with st.beta_expander("Demography Analysis"):
   
 with st.beta_expander('Textual Analysis'):
   
-  df_zoning = data['I feel that the zoning restrictions were ________.'].rename({'I feel that the zoning restrictions were ________.':'comments'},axis=1)
+  df_zoning = data['I feel that the zoning restrictions were ________.'].rename('comments')
 
   st.header('I feel that the zoning restrictions were _.')
   if st.checkbox('Show n random comments',True,key='1'):
