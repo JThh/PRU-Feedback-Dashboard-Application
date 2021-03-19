@@ -57,7 +57,7 @@ def categorize(senti):
  
 # Set the title and basic layout of the application.
 st.title("PRU Feedback Survey Dashboard")
-st.markdown('Exploratory Analysis | Presented by PRU Feedback Team')
+st.markdown('_Exploratory Analysis_ | Presented by **PRU Feedback Team**')
 
 
 data = pd.read_csv('sample.csv')
