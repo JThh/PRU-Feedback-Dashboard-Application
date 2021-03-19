@@ -128,7 +128,7 @@ with st.beta_expander('Textual Analysis'):
   st.markdown('The sentiment is evaluated as a polarity score ranging from -1 to 1. The lower the comment is scored, the less positive it tends to be.')
   
   sid = SentimentIntensityAnalyzer()
-  scores = pd.Series([sid.polarity_score(text) for text in df_zoning.comments],name='score')
+  scores = pd.Series([sid.polarity_score(text) for text in df_zoning['comment']],name='score')
   df_zoning_score = pd.concat([df_zoning, scores],axis=1)
   if st.checkbox('Show some examples',False,key='score'):
     st.table(df_zoning_score.sample(5))
