@@ -76,7 +76,7 @@ with st.beta_expander('Time Series Analysis'):
     if i in dates.index:
       all_dates.loc[i,'Number_of_replies'] = dates[i]
     else:
-      all_dates.loc[i,'Number_of_replies'] = np.random.randint(2)
+      all_dates.loc[i,'Number_of_replies'] = 0
 
   st.subheader("Response Timeline")
   
@@ -137,8 +137,8 @@ with st.beta_expander('Textual Analysis'):
 
   st.header('I feel that the zoning restrictions were ____.')
   if st.checkbox('Show n random comments',True,key='1'):
-    number = st.slider('Number of comments to take a look at:', 1, 10, 5,key='1')
-    sample = df_zoning.sample(number)
+    number = st.slider('Number of comments to take a look at:', 1, df_zoning.dropna().shape[0],3,key='1')
+    sample = df_zoning.dropna().sample(number)
     st.table(sample)
   
   st.subheader('Wordcloud')
