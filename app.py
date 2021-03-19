@@ -143,15 +143,15 @@ with st.beta_expander('Textual Analysis'):
   combined_with = st.multiselect('Combine the result with', ('Faculty','Year of Study'),key='combo')
   
   if 'Faculty' in combined_with:
-    faculties = list(data.Faculty.unique())
+    faculties = data.Faculty.unique()
     df_fac_sen = pd.concat([df_zoning_score.category, data.Faculty],axis=1)
     df_fac_sen['count'] = 1
     fac_pos = df_fac_sen.groupby(['category','Faculty']).count()
     st.table(faculties)
     fig = go.Figure(data=[
         go.Bar(name='Negative', x=faculties, y=fac_pos.loc['Negative']),
-        go.Bar(name='Neutral', x=faculties, y=fac_pos.loc['Neutral']),
-        go.Bar(name='Positive', x=faculties, y=fac_pos.loc['Positive'])
+#        go.Bar(name='Neutral', x=faculties, y=fac_pos.loc['Neutral']),
+ #       go.Bar(name='Positive', x=faculties, y=fac_pos.loc['Positive'])
     ])
     # Change the bar mode
     fig.update_layout(barmode='group')
