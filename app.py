@@ -130,6 +130,7 @@ with st.beta_expander('Textual Analysis'):
   sid = SentimentIntensityAnalyzer()
   scores = pd.Series([sid.polarity_scores(str(text)) for text in df_zoning.values],name='score')
   df_zoning_score = pd.concat([df_zoning, scores],axis=1)
+  df_zoning_score.columns = ['comments','scores']
   if st.checkbox('Show some examples',False,key='score'):
     st.table(df_zoning_score.sample(5))
     
