@@ -20,7 +20,11 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 st.sidebar.header('Dashboard for PRU Feedback Survey')
 
 with st.sidebar.beta_expander("Instructions"):
-  st.sidebar.markdown('The whole process is grouped into 4 parts: **time series analysis**, **demographic analysis**, **multiple-choice question analysis** and **textual analysis**.<br> Please follow the logic flow and do not miss any button to ensure the normal operation.')
+  st.markdown('''
+    The whole process is grouped into 4 parts: **time series analysis**, **demographic analysis**, **multiple-choice question analysis** and **textual analysis**. 
+    Please follow the logic flow and do not miss any button to ensure the normal operation. 
+    Also the code can be reused for future surveys upon minor modifications.
+                      ''')
                       
 
 # Some utility functions.
