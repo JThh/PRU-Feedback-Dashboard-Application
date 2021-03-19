@@ -115,21 +115,6 @@ with st.beta_expander("Demography Analysis"):
   )
   
   st.plotly_chart(fig)  
-
-with st.beta_expander('Multiple Choice Question Analysis (Example)'):
-  
-  data.rename({'During my time on campus, the COVID-19 measures put in place by NUS were easy to follow.':'Measures easy to follow'},inplace=True,axis=1)
-  df = data[['Measures easy to follow','count']].groupby(['Measures easy to follow']).count().reset_index()
-  df['sort'] = df['Measures easy to follow'].apply(lambda x:ORDER_OF_AGREE.index(x))
-  df.sort_values(by=['sort'])
-  fig = px.bar(
-    df, 
-    x="Measures easy to follow", 
-    y="count", 
-    color = "Measures easy to follow",
-    title='The COVID-19 measures put in place by NUS were easy to follow.'
-  )
-  st.plotly_chart(fig)  
   
 with st.beta_expander('Textual Analysis'):
   
@@ -257,7 +242,20 @@ with st.beta_expander('Textual Analysis'):
     
     st.plotly_chart(fig)    
 
-
+with st.beta_expander('Multiple Choice Question Analysis (Example)'):
+  
+  data.rename({'During my time on campus, the COVID-19 measures put in place by NUS were easy to follow.':'Measures easy to follow'},inplace=True,axis=1)
+  df = data[['Measures easy to follow','count']].groupby(['Measures easy to follow']).count().reset_index()
+  df['sort'] = df['Measures easy to follow'].apply(lambda x:ORDER_OF_AGREE.index(x))
+  df.sort_values(by=['sort'])
+  fig = px.bar(
+    df, 
+    x="Measures easy to follow", 
+    y="count", 
+    color = "Measures easy to follow",
+    title='The COVID-19 measures put in place by NUS were easy to follow.'
+  )
+  st.plotly_chart(fig)  
   
   
   
