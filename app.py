@@ -144,7 +144,7 @@ with st.beta_expander('Textual Analysis'):
   
   if 'Faculty' in combined_with:
     faculties = df_faculty.Faculty.unique()
-    df_fac_sen = pd.concat([df_zoning_score.category, df_faculty.Faculty],axis=1)
+    df_fac_sen = pd.concat([df_zoning_score.category, data.Faculty],axis=1)
     fac_pos = df_fac_sen.groupby(['category','Faculty']).count()
     
     st.dataframe(df_fac_sen)
