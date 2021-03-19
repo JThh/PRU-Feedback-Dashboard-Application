@@ -85,8 +85,7 @@ with st.beta_expander('Time Series Analysis'):
 
 with st.beta_expander("Demography Analysis"):
   
-  st.subheader('Distribution of Respondent Home Faculty')
-  
+  # Data Preparation
   data['count'] = 1
   
   data.rename({'Which Faculty are you from? (Indicate your home faculty if you are in a double-degree programme)':'Faculty',
@@ -94,6 +93,10 @@ with st.beta_expander("Demography Analysis"):
   df_faculty = data[['Faculty','count']].groupby(['Faculty']).count().reset_index()
   df_year = data[['Year of Study','count']].groupby(['Year of Study']).count().reset_index()
   
+  # Split the panel into 2.
+  col1, col2 = st.beta_columns(2)
+  
+  col1.subheader('Distribution of Respondent Home Faculty')
   fig = px.pie(
       df_faculty, 
       names="Faculty", 
@@ -101,9 +104,9 @@ with st.beta_expander("Demography Analysis"):
       color="Faculty",
       title='Which Faculty are you from?'
   )
-  st.plotly_chart(fig)
+  col1.plotly_chart(fig)
   
-  st.subheader('Distribution of Respondent Year of Study')
+  col2.subheader('Distribution of Respondent Year of Study')
   fig = px.bar(
       df_year, 
       x="count", 
@@ -113,7 +116,21 @@ with st.beta_expander("Demography Analysis"):
       title='Which year of study are you currently in'
   )
   
-  st.plotly_chart(fig)  
+  col2.plotly_chart(fig)  
+
+with st.bete_expander('Multiple Choice Question Analysis'):
+  with st.bete_expander('(Example) During my time on campus, the COVID-19 measures put in place by NUS were easy to follow.'):
+    data.rename({'During my time on campus, the COVID-19 measures put in place by NUS were easy to follow.':'Measures easy to follow'},inplace=True)
+    df = data['Measures easy to follow','count'].groupby(['Measures easy to follow']).count()
+    fig = px.bar(
+      df, 
+      x="count", 
+      y="Measures easy to follow", 
+      color = "Measures easy to follow",
+      orientation='h', 
+      title='During my time on campus, the COVID-19 measures put in place by NUS were easy to follow.'
+    )
+    st.plotly_chart(fig)  
   
 with st.beta_expander('Textual Analysis'):
   
