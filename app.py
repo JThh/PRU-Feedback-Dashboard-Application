@@ -93,21 +93,18 @@ with st.beta_expander("Demography Analysis"):
   df_faculty = data[['Faculty','count']].groupby(['Faculty']).count().reset_index()
   df_year = data[['Year of Study','count']].groupby(['Year of Study']).count().reset_index()
   
-  # Split the panel into 2.
-  col1, col2 = st.beta_columns(2)
-  
-  col1.subheader('Distribution of Respondent Home Faculty')
+  st.subheader('Distribution of Respondent Home Faculty')
   fig = px.pie(
       df_faculty, 
       names="Faculty", 
       values="count", 
       color="Faculty",
       title='Which Faculty are you from?',
-      width=400, height=400
+      width=600, height=600
   )
-  col1.plotly_chart(fig)
+  st.plotly_chart(fig)
   
-  col2.subheader('Distribution of Respondent Year of Study')
+  st.subheader('Distribution of Respondent Year of Study')
   fig = px.bar(
       df_year, 
       x="count", 
@@ -115,14 +112,14 @@ with st.beta_expander("Demography Analysis"):
       color = "Year of Study",
       orientation='h', 
       title='Which year of study are you currently in',
-      width=400, height=400
+      width=600, height=600
   )
   
-  col2.plotly_chart(fig)  
+  st.plotly_chart(fig)  
 
 with st.beta_expander('Multiple Choice Question Analysis (Example)'):
   data.rename({'During my time on campus, the COVID-19 measures put in place by NUS were easy to follow.':'Measures easy to follow'},inplace=True)
-  df = data['Measures easy to follow','count'].groupby(['Measures easy to follow']).count()
+  df = data[['Measures easy to follow','count']].groupby(['Measures easy to follow']).count()
   fig = px.bar(
     df, 
     x="count", 
