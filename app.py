@@ -193,7 +193,7 @@ with st.beta_expander('Textual Analysis'):
           titlefont_size=16,
           tickfont_size=14,
       ),
-      barmode='stack',
+      barmode='group',
       bargap=0.15, # gap between bars of adjacent location coordinates.
       bargroupgap=0.1 # gap between bars of the same location coordinate.
     )
