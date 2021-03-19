@@ -123,7 +123,6 @@ with st.beta_expander('Multiple Choice Question Analysis (Example)'):
     x="count", 
     y="Measures easy to follow", 
     color = "Measures easy to follow",
-    orientation='h', 
     title='During my time on campus, the COVID-19 measures put in place by NUS were easy to follow.'
   )
   st.plotly_chart(fig)  
