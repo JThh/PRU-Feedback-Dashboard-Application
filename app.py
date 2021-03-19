@@ -66,7 +66,7 @@ data = pd.read_csv('sample.csv')
 # Number of responses along the timeline
 
 with st.beta_expander('Time Series Analysis'):
-  data.Timestamp = data.Timestamp.apply(lambda x:pd.to_datatime(x[:10]))
+  data.Timestamp = data.Timestamp.apply(lambda x:pd.to_datetime(x[:10]))
   dates = data.Timestamp.value_counts().sort_index()
 
   timeindex = pd.date_range(start=dates.index[0],end=dates.index[-1])
