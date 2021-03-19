@@ -65,7 +65,7 @@ with st.beta_expander("Demography Analysis"):
   
   st.plotly_chart(fig)  
   
-With st.beta_expander('Textual Analysis'):
+with st.beta_expander('Textual Analysis'):
   
   df_zoning = data['I feel that the zoning restrictions were ________.'].dropna()
 
