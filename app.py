@@ -103,7 +103,7 @@ with st.beta_expander("Demography Analysis"):
       values="count", 
       color="Faculty",
       title='Which Faculty are you from?',
-      width=800, height=400
+      width=400, height=400
   )
   col1.plotly_chart(fig)
   
@@ -115,24 +115,23 @@ with st.beta_expander("Demography Analysis"):
       color = "Year of Study",
       orientation='h', 
       title='Which year of study are you currently in',
-      width=800, height=400
+      width=400, height=400
   )
   
   col2.plotly_chart(fig)  
 
-with st.beta_expander('Multiple Choice Question Analysis'):
-  with st.beta_expander('(Example) During my time on campus, the COVID-19 measures put in place by NUS were easy to follow.'):
-    data.rename({'During my time on campus, the COVID-19 measures put in place by NUS were easy to follow.':'Measures easy to follow'},inplace=True)
-    df = data['Measures easy to follow','count'].groupby(['Measures easy to follow']).count()
-    fig = px.bar(
-      df, 
-      x="count", 
-      y="Measures easy to follow", 
-      color = "Measures easy to follow",
-      orientation='h', 
-      title='During my time on campus, the COVID-19 measures put in place by NUS were easy to follow.'
-    )
-    st.plotly_chart(fig)  
+with st.beta_expander('Multiple Choice Question Analysis (Example)'):
+  data.rename({'During my time on campus, the COVID-19 measures put in place by NUS were easy to follow.':'Measures easy to follow'},inplace=True)
+  df = data['Measures easy to follow','count'].groupby(['Measures easy to follow']).count()
+  fig = px.bar(
+    df, 
+    x="count", 
+    y="Measures easy to follow", 
+    color = "Measures easy to follow",
+    orientation='h', 
+    title='During my time on campus, the COVID-19 measures put in place by NUS were easy to follow.'
+  )
+  st.plotly_chart(fig)  
   
 with st.beta_expander('Textual Analysis'):
   
