@@ -135,6 +135,10 @@ with st.beta_expander('Textual Analysis'):
     st.table(df_zoning_score.sample(5))
     
   df_zoning_score['category'] = df_zoning_score.scores.apply(lambda x:categorize(x))
+  
+  if st.button('Show the boxplot',key='boxplot'):
+    fig = px.box(df_zoning_score, x="category", y="scores", points="all")
+    st.plotly_chart(fig)
     
   st.markdown('To make easier comparison, the sentiment is categoried into \'positive\', \'neutral\' and \'negative\' based on their polarity score. Now it\'s time to visualize our findings.')
   
