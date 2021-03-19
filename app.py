@@ -66,7 +66,7 @@ data = pd.read_csv('sample.csv')
 # Number of responses along the timeline
 
 with st.beta_expander('Time Series Analysis'):
-  data.Timestamp = data.Timestamp.apply(lambda x:x[:10])
+  data.Timestamp = data.Timestamp.apply(lambda x:pd.to_datatime(x[:10]))
   dates = data.Timestamp.value_counts().sort_index()
 
   timeindex = pd.date_range(start=dates.index[0],end=dates.index[-1])
@@ -76,7 +76,7 @@ with st.beta_expander('Time Series Analysis'):
     if i in dates.index:
       all_dates.loc[i,'Number_of_replies'] = dates[i]
     else:
-      all_dates.loc[i,'Number_of_replies'] = 0
+      all_dates.loc[i,'Number_of_replies'] = np.random.randint(5,size=1)
 
   st.subheader("Response Timeline")
   
