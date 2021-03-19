@@ -226,7 +226,7 @@ with st.beta_expander('Textual Analysis'):
     bargap=0.15, # gap between bars of adjacent location coordinates.
     bargroupgap=0.1 # gap between bars of the same location coordinate.
   )  
-  
+  st.plotly_chart(fig)    
 
 
   
