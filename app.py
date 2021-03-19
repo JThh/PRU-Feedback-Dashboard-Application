@@ -10,6 +10,7 @@ import plotly.graph_objects as go
 import plotly.graph_objs as go
 from wordcloud import WordCloud, STOPWORDS
 
+import nltk
 nltk.download('vader_lexicon') 
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
