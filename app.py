@@ -17,6 +17,12 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 # Disable the warnings.
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
+st.sidebar.header('Dashboard for PRU Feedback Survey')
+
+with st.sidebar.beta_expander("Instructions"):
+  st.sidebar.markdown('The whole process is grouped into 4 parts: **time series analysis**, **demographic analysis**, **multiple-choice question analysis** and **textual analysis**.<br> Please follow the logic flow and do not miss any button to ensure the normal operation.')
+                      
+
 # Some utility functions.
 def build_wordcloud(df, title):
   wordcloud = WordCloud(
