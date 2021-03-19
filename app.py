@@ -102,7 +102,7 @@ with st.beta_expander("Demography Analysis"):
       names="Faculty", 
       values="count", 
       color="Faculty",
-      title='Which Faculty are you from?'
+      title='Which Faculty are you from?',
       width=800, height=400
   )
   col1.plotly_chart(fig)
