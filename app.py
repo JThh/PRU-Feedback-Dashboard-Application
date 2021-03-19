@@ -147,9 +147,7 @@ with st.beta_expander('Textual Analysis'):
     df_fac_sen = pd.concat([df_zoning_score.category, data.Faculty],axis=1)
     df_fac_sen['count'] = 1
     fac_pos = df_fac_sen.groupby(['category','Faculty']).count()
-    
-    st.dataframe(df_fac_sen)
-    st.dataframe(fac_pos['Negative'])
+   
     fig = go.Figure(data=[
         go.Bar(name='Negative', x=faculties, y=fac_pos.loc['Negative'].values),
         go.Bar(name='Neutral', x=faculties, y=fac_pos.loc['Neutral'].values),
