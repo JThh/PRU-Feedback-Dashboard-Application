@@ -155,7 +155,7 @@ with st.beta_expander('Textual Analysis'):
     ])
     # Change the bar mode
     fig.update_layout(barmode='group')
-    fig.show()
+    st.plotly_chart(fig)
 
   
 
