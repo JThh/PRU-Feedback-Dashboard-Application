@@ -257,6 +257,8 @@ with st.beta_expander('Multiple Choice Question Analysis (Example)'):
   )
   st.plotly_chart(fig)  
   
+  st.text('To be continued...')
+  
   
   
   
