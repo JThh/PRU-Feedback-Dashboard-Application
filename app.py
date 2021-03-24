@@ -49,7 +49,7 @@ ORDER_OF_AGREE = ['Strongly agree','Agree','Slightly agree','Slightly disagree',
  
 # Set the title and basic layout of the application.
 st.title("PRU Feedback Survey Dashboard")
-st.markdown('_Exploratory Analysis_ | Presented by **PRU Feedback Team**')
+st.markdown('_Exploratory Analysis_ | Powered by **PRU Feedback Team**')
 
 st.sidebar.header('Dashboard for PRU Feedback Survey')
 
